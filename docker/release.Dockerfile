@@ -1,7 +1,4 @@
-FROM grails-sample:latest
-
-# Create App Directory
-RUN mkdir /app
+FROM grails-base:latest
 
 # Set Workdir
 WORKDIR /app
@@ -9,7 +6,7 @@ WORKDIR /app
 # copy the app code
 COPY . .
 
-RUN gradle clean build -x test
+RUN ./gradlew clean build -x test
 
 # Set Default Behavior
 ENTRYPOINT grails run-app
